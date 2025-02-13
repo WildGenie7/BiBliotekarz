@@ -97,7 +97,7 @@ namespace BiBliotekarz.Class
                     DateTime.Parse(reader["ReleaseDate"].ToString()),
                     long.Parse(reader["BookID"].ToString()),
                     int.Parse(reader["NumberOfBooks"].ToString()),
-                    int.Parse(reader["AvailableBooks"].ToString()) // Dodano AvailableBooks
+                    int.Parse(reader["AvailableBooks"].ToString()) 
                 ));
         }
 
@@ -121,7 +121,7 @@ namespace BiBliotekarz.Class
                     command.Parameters.AddWithValue("@Author", book.Author);
                     command.Parameters.AddWithValue("@ReleaseDate", book.ReleaseDate);
                     command.Parameters.AddWithValue("@NumberOfBooks", book.NumberOfBooks);
-                    command.Parameters.AddWithValue("@AvailableBooks", book.AvailableBooks); // Nowa wartoœæ
+                    command.Parameters.AddWithValue("@AvailableBooks", book.AvailableBooks); 
                     command.Parameters.AddWithValue("@BookID", book.BookID);
 
                     connection.Open();
@@ -183,7 +183,7 @@ namespace BiBliotekarz.Class
                             int rowsAffected = command.ExecuteNonQuery();
                             if (rowsAffected == 0)
                             {
-                                throw new Exception("Brak dostêpnych egzemplarzy ksi¹¿ki.");
+                                throw new Exception("Brak dostÃªpnych egzemplarzy ksiÂ¹Â¿ki.");
                             }
                         }
 
@@ -287,7 +287,7 @@ namespace BiBliotekarz.Class
                 });
         }
 
-        // Metody pomocnicze do zapytañ
+        // Metody pomocnicze do zapytaÃ±
         private static void ExecuteNonQuery(string query, Action<SqlCommand> parameterize)
         {
             using (var connection = new SqlConnection(DatabaseManager.ConnectionString))
@@ -420,12 +420,12 @@ namespace BiBliotekarz.Class
 
                             if (book == null)
                             {
-                                continue; // Pomijamy transakcjê, jeœli ksi¹¿ka nie istnieje
+                                continue; // Pomijamy transakcjÃª, jeÅ“li ksiÂ¹Â¿ka nie istnieje
                             }
 
                             if (client == null)
                             {
-                                continue; // Pomijamy transakcjê, jeœli klient nie istnieje
+                                continue; // Pomijamy transakcjÃª, jeÅ“li klient nie istnieje
                             }
 
                             transactions.Add(new TransactionDetails
@@ -470,7 +470,7 @@ namespace BiBliotekarz.Class
                             worksheet.Cells[1, col + 1].Value = reader.GetName(col);
                         }
 
-                        int row = 2; // Dane zaczynaj¹ siê od drugiego wiersza
+                        int row = 2; // Dane zaczynajÂ¹ siÃª od drugiego wiersza
                         while (reader.Read())
                         {
                             for (int col = 0; col < reader.FieldCount; col++)
